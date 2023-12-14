@@ -1,0 +1,335 @@
+body {
+    background: black;
+}
+
+table {
+font-family: arial, sans-serif;
+border-collapse: collapse;
+width: 100%;
+}
+
+td, th{
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+    color: white;
+}
+
+tr:nth-child(even) {
+    color: black;
+    background-color: #dddddd2d;
+}
+
+.input {
+    margin-top: 20px;
+    color: #fff;
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    box-sizing: border-box;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+    border-bottom: var(--border-height) solid var(--border-before-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-border {
+    position: absolute;
+    background: var(--border-after-color);
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+.input:focus {
+    outline: none;
+}
+
+.input:focus + .input-border {
+    width: 100%;
+}
+
+.form-control {
+    position: relative;
+    --width-of-input: 300px;
+}
+
+.input-alt {
+    font-size: 1.2rem;
+    padding-inline: 1em;
+    padding-block: 0.8em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.input-border-alt {
+    height: 3px;
+    background: linear-gradient(90deg, #FF6464 0%, #FFBF59 50%, #47C9FF 100%);
+    transition: width 0.4s cubic-bezier(0.42, 0, 0.58, 1.00);
+}
+
+.input-alt:focus + .input-border-alt {
+    width: 100%;
+}
+
+button{
+    margin: 20px;
+}
+.btn {
+    --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+    --border-width: .125em;
+    --curve-size: .5em;
+    --blur: 30px;
+    --bg: #080312;
+    --color: #afffff;
+    color: var(--color);
+      /* use position: relative; so that BG is only for .btn */
+    position: relative;
+    isolation: isolate;
+    display: inline-grid;
+    place-content: center;
+    padding: .5em 1.5em;
+    font-size: 17px;
+    border: 0;
+    text-transform: uppercase;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, .6);
+    clip-path: polygon(
+              /* Top-left */
+              0% var(--curve-size),
+  
+              var(--curve-size) 0,
+              /* top-right */
+              100% 0,
+              100% calc(100% - var(--curve-size)),
+  
+              /* bottom-right 1 */
+              calc(100% - var(--curve-size)) 100%,
+              /* bottom-right 2 */
+              0 100%);
+    transition: color 250ms;
+  }
+  
+  .btn::after,
+  .btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+  
+  .btn::before {
+    background: var(--border-color);
+    background-size: 300% 300%;
+    animation: move-bg7234 5s ease infinite;
+    z-index: -2;
+  }
+  
+  @keyframes move-bg7234 {
+    0% {
+      background-position: 31% 0%
+    }
+  
+    50% {
+      background-position: 70% 100%
+    }
+  
+    100% {
+      background-position: 31% 0%
+    }
+  }
+  
+  .btn::after {
+    background: var(--bg);
+    z-index: -1;
+    clip-path: polygon(
+              /* Top-left */
+              var(--border-width) 
+              calc(var(--curve-size) + var(--border-width) * .5),
+  
+              calc(var(--curve-size) + var(--border-width) * .5) var(--border-width),
+  
+              /* top-right */
+              calc(100% - var(--border-width)) 
+              var(--border-width),
+  
+              calc(100% - var(--border-width)) 
+              calc(100% - calc(var(--curve-size) + var(--border-width) * .5)),
+  
+              /* bottom-right 1 */
+              calc(100% - calc(var(--curve-size) + var(--border-width) * .5)) calc(100% - var(--border-width)),
+              /* bottom-right 2 */
+              var(--border-width) calc(100% - var(--border-width)));
+    transition: clip-path 500ms;
+  }
+  
+  .btn:where(:hover, :focus)::after {
+    clip-path: polygon(
+                  /* Top-left */
+                  calc(100% - var(--border-width)) 
+  
+                  calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      
+                  calc(100% - var(--border-width))
+  
+                  var(--border-width),
+      
+                  /* top-right */
+                  calc(100% - var(--border-width))
+  
+                  var(--border-width),
+      
+                  calc(100% - var(--border-width)) 
+  
+                  calc(100% - calc(var(--curve-size) + var(--border-width) * .5)),
+      
+                  /* bottom-right 1 */
+                  calc(100% - calc(var(--curve-size) + var(--border-width) * .5)) 
+                  calc(100% - var(--border-width)),
+  
+                  /* bottom-right 2 */
+                  calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+                  calc(100% - var(--border-width)));
+    transition: 200ms;
+  }
+  
+  .btn:where(:hover, :focus) {
+    color: #fff;
+  }
+
+
+  .container {
+    width: 100%;
+    height: 100%;
+    --s: 37px; /* control the size */
+  
+    --c: #0000, #282828 0.5deg 119.5deg, #0000 120deg;
+    --g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+    --g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+    --g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+    background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+      var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+      var(--g3) 0 calc(1.73 * var(--s)) #1e1e1e;
+    background-size: calc(2 * var(--s)) calc(3.46 * var(--s));
+  }
+  
+
+  .checkbox-wrapper-10 .tgl {
+    display: none;
+  }
+  
+  .checkbox-wrapper-10 .tgl,
+    .checkbox-wrapper-10 .tgl:after,
+    .checkbox-wrapper-10 .tgl:before,
+    .checkbox-wrapper-10 .tgl *,
+    .checkbox-wrapper-10 .tgl *:after,
+    .checkbox-wrapper-10 .tgl *:before,
+    .checkbox-wrapper-10 .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  
+  .checkbox-wrapper-10 .tgl::-moz-selection,
+    .checkbox-wrapper-10 .tgl:after::-moz-selection,
+    .checkbox-wrapper-10 .tgl:before::-moz-selection,
+    .checkbox-wrapper-10 .tgl *::-moz-selection,
+    .checkbox-wrapper-10 .tgl *:after::-moz-selection,
+    .checkbox-wrapper-10 .tgl *:before::-moz-selection,
+    .checkbox-wrapper-10 .tgl + .tgl-btn::-moz-selection,
+    .checkbox-wrapper-10 .tgl::selection,
+    .checkbox-wrapper-10 .tgl:after::selection,
+    .checkbox-wrapper-10 .tgl:before::selection,
+    .checkbox-wrapper-10 .tgl *::selection,
+    .checkbox-wrapper-10 .tgl *:after::selection,
+    .checkbox-wrapper-10 .tgl *:before::selection,
+    .checkbox-wrapper-10 .tgl + .tgl-btn::selection {
+    background: none;
+  }
+  
+  .checkbox-wrapper-10 .tgl + .tgl-btn {
+    outline: 0;
+    display: inline-block;
+    width: 5em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .checkbox-wrapper-10 .tgl + .tgl-btn:after,
+    .checkbox-wrapper-10 .tgl + .tgl-btn:before {
+    position: relative;
+    margin: 10px;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  
+  .checkbox-wrapper-10 .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  
+  .checkbox-wrapper-10 .tgl + .tgl-btn:before {
+    display: none;
+  }
+  
+  .checkbox-wrapper-10 .tgl:checked + .tgl-btn:after {
+    left: 50%;
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip + .tgl-btn {
+    padding: 2px;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    perspective: 100px;
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip + .tgl-btn:after,
+    .checkbox-wrapper-10 .tgl-flip + .tgl-btn:before {
+    display: inline-block;
+    transition: all 0.4s ease;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    line-height: 2em;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 4px;
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip + .tgl-btn:after {
+    content: attr(data-tg-on);
+    background: #02C66F;
+    transform: rotateY(-180deg);
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip + .tgl-btn:before {
+    background: #FF3A19;
+    content: attr(data-tg-off);
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip + .tgl-btn:active:before {
+    transform: rotateY(-20deg);
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:before {
+    transform: rotateY(180deg);
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:after {
+    transform: rotateY(0);
+    left: 0;
+    background: #7FC6A6;
+  }
+  
+  .checkbox-wrapper-10 .tgl-flip:checked + .tgl-btn:active:after {
+    transform: rotateY(20deg);
+  }
